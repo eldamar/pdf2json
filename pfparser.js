@@ -1,5 +1,5 @@
 var nodeUtil = require("util"),
-	nodeEvents = require("events"),
+    nodeEvents = require("events"),
     _ = require("underscore"),
     fs = require('fs'),
     PDFJS = require("./pdf.js");
@@ -25,9 +25,9 @@ var PDFParser = (function () {
 
     // constructor
     var cls = function (context) {
-		//call constructor for super class
-		nodeEvents.EventEmitter.call(this);
-	
+        //call constructor for super class
+        nodeEvents.EventEmitter.call(this);
+    
         // private
         var _id = _nextId++;
 
@@ -42,7 +42,7 @@ var PDFParser = (function () {
         this.parsePropCount = 0;
     };
     // inherit from event emitter
-	nodeUtil.inherits(cls, nodeEvents.EventEmitter);
+    nodeUtil.inherits(cls, nodeEvents.EventEmitter);
 
     // public static
     cls.get_nextId = function () {

@@ -3,7 +3,7 @@ var nodeUtil = require("util"),
     nodeEvents = require("events"),
     fs = require('fs'),
     _ = require('underscore'),
-    DOMParser = require('./../node_modules/xmldom').DOMParser,
+    DOMParser = require('xmldom').DOMParser,
     PDFCanvas = require('./pdfcanvas.js'),
     PDFUnit = require('./pdfunit.js'),
     PDFField = require('./pdffield.js');
@@ -111,7 +111,7 @@ var PDFPageParser = (function () {
         });
     };
     // inherit from event emitter
-	nodeUtil.inherits(cls, nodeEvents.EventEmitter);
+    nodeUtil.inherits(cls, nodeEvents.EventEmitter);
 
     cls.prototype.destroy = function() {
         this.pdfPage.destroy();
@@ -192,7 +192,7 @@ var PDFJSClass = (function () {
         this.formImage = null;
     };
     // inherit from event emitter
-	nodeUtil.inherits(cls, nodeEvents.EventEmitter);
+    nodeUtil.inherits(cls, nodeEvents.EventEmitter);
 
     cls.prototype.parsePDFData = function(arrayBuffer) {
         var parameters = {password: '', data: arrayBuffer};

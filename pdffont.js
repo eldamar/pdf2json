@@ -8,81 +8,81 @@ var PDFFont = (function PFPFontClosure() {
     var _nextId = 1;
     var _name = 'PDFFont';
 
-    var _boldSubNames = ["bd", "bold", "demi", "black"];
+    var _boldSubNames = ["bd", "bold", "demi"];
 
     var _kFontFaces = [
-       "QuickType,Arial,Helvetica,sans-serif",							// 00 - QuickType - sans-serif variable font
-       "QuickType Condensed,Arial Narrow,Arial,Helvetica,sans-serif",	// 01 - QuickType Condensed - thin sans-serif variable font
-       "QuickTypePi",													// 02 - QuickType Pi
-       "QuickType Mono,Courier New,Courier,monospace",					// 03 - QuickType Mono - san-serif fixed font
-       "OCR-A,Courier New,Courier,monospace",							// 04 - OCR-A - OCR readable san-serif fixed font
-       "OCR B MT,Courier New,Courier,monospace"							// 05 - OCR-B MT - OCR readable san-serif fixed font
+       "QuickType,Arial,Helvetica,sans-serif",                          // 00 - QuickType - sans-serif variable font
+       "QuickType Condensed,Arial Narrow,Arial,Helvetica,sans-serif",   // 01 - QuickType Condensed - thin sans-serif variable font
+       "QuickTypePi",                                                   // 02 - QuickType Pi
+       "QuickType Mono,Courier New,Courier,monospace",                  // 03 - QuickType Mono - san-serif fixed font
+       "OCR-A,Courier New,Courier,monospace",                           // 04 - OCR-A - OCR readable san-serif fixed font
+       "OCR B MT,Courier New,Courier,monospace"                         // 05 - OCR-B MT - OCR readable san-serif fixed font
     ];
 
     var _kFontStyles = [
-        // Face		Size	Bold	Italic		StyleID(Comment)
-        // -----	----	----	-----		-----------------
-            [0,		6,		0,		0],			//00
-            [0,		8,		0,		0],			//01
-            [0,		10,		0,		0],			//02
-            [0,		12,		0,		0],			//03
-            [0,		14,		0,		0],			//04
-            [0,		18,		0,		0],			//05
-            [0,		6,		1,		0],			//06
-            [0,		8,		1,		0],			//07
-            [0,		10,		1,		0],			//08
-            [0,		12,		1,		0],			//09
-            [0,		14,		1,		0],			//10
-            [0,		18,		1,		0],			//11
-            [0,		6,		0,		1],			//12
-            [0,		8,		0,		1],			//13
-            [0,		10,		0,		1],			//14
-            [0,		12,		0,		1],			//15
-            [0,		14,		0,		1],			//16
-            [0,		18,		0,		1],			//17
-            [0,		6,		1,		1],			//18
-            [0,		8,		1,		1],			//19
-            [0,		10,		1,		1],			//20
-            [0,		12,		1,		1],			//21
-            [0,		14,		1,		1],			//22
-            [0,		18,		1,		1],			//23
-            [1,		6,		0,		0],			//24
-            [1,		8,		0,		0],			//25
-            [1,		10,		0,		0],			//26
-            [1,		12,		0,		0],			//27
-            [1,		14,		0,		0],			//28
-            [1,		18,		0,		0],			//29
-            [1,		6,		1,		0],			//30
-            [1,		8,		1,		0],			//31
-            [1,		10,		1,		0],			//32
-            [1,		12,		1,		0],			//33
-            [1,		14,		1,		0],			//34
-            [1,		18,		1,		0],			//35
-            [1,		6,		0,		1],			//36
-            [1,		8,		0,		1],			//37
-            [1,		10,		0,		1],			//38
-            [1,		12,		0,		1],			//39
-            [1,		14,		0,		1],			//40
-            [1,		18,		0,		1],			//41
-            [2,		8,		0,		0],			//42
-            [2,		10,		0,		0],			//43
-            [2,		12,		0,		0],			//44
-            [2,		14,		0,		0],			//45
-            [2,		12,		0,		0],			//46 MQZ: Changed font size from 18 tp 12
-            [3,		8,		0,		0],			//47
-            [3,		10,		0,		0],			//48
-            [3,		12,		0,		0],			//49
-            [4,		12,		0,		0],			//50
-            [0,		9,		0,		0],			//51
-            [0,		9,		1,		0],			//52
-            [0,		9,		0,		1],			//53
-            [0,		9,		1,		1],			//54
-            [1,		9,		0,		0],			//55
-            [1,		9,		1,		0],			//56
-            [1,		9,		1,		1],			//57
-            [4,		10,		0,		0],			//58
-            [5,		10,		0,		0],			//59
-            [5,		12,		0,		0]			//60
+        // Face     Size    Bold    Italic      StyleID(Comment)
+        // -----    ----    ----    -----       -----------------
+            [0,     6,      0,      0],         //00
+            [0,     8,      0,      0],         //01
+            [0,     10,     0,      0],         //02
+            [0,     12,     0,      0],         //03
+            [0,     14,     0,      0],         //04
+            [0,     18,     0,      0],         //05
+            [0,     6,      1,      0],         //06
+            [0,     8,      1,      0],         //07
+            [0,     10,     1,      0],         //08
+            [0,     12,     1,      0],         //09
+            [0,     14,     1,      0],         //10
+            [0,     18,     1,      0],         //11
+            [0,     6,      0,      1],         //12
+            [0,     8,      0,      1],         //13
+            [0,     10,     0,      1],         //14
+            [0,     12,     0,      1],         //15
+            [0,     14,     0,      1],         //16
+            [0,     18,     0,      1],         //17
+            [0,     6,      1,      1],         //18
+            [0,     8,      1,      1],         //19
+            [0,     10,     1,      1],         //20
+            [0,     12,     1,      1],         //21
+            [0,     14,     1,      1],         //22
+            [0,     18,     1,      1],         //23
+            [1,     6,      0,      0],         //24
+            [1,     8,      0,      0],         //25
+            [1,     10,     0,      0],         //26
+            [1,     12,     0,      0],         //27
+            [1,     14,     0,      0],         //28
+            [1,     18,     0,      0],         //29
+            [1,     6,      1,      0],         //30
+            [1,     8,      1,      0],         //31
+            [1,     10,     1,      0],         //32
+            [1,     12,     1,      0],         //33
+            [1,     14,     1,      0],         //34
+            [1,     18,     1,      0],         //35
+            [1,     6,      0,      1],         //36
+            [1,     8,      0,      1],         //37
+            [1,     10,     0,      1],         //38
+            [1,     12,     0,      1],         //39
+            [1,     14,     0,      1],         //40
+            [1,     18,     0,      1],         //41
+            [2,     8,      0,      0],         //42
+            [2,     10,     0,      0],         //43
+            [2,     12,     0,      0],         //44
+            [2,     14,     0,      0],         //45
+            [2,     12,     0,      0],         //46 MQZ: Changed font size from 18 tp 12
+            [3,     8,      0,      0],         //47
+            [3,     10,     0,      0],         //48
+            [3,     12,     0,      0],         //49
+            [4,     12,     0,      0],         //50
+            [0,     9,      0,      0],         //51
+            [0,     9,      1,      0],         //52
+            [0,     9,      0,      1],         //53
+            [0,     9,      1,      1],         //54
+            [1,     9,      0,      0],         //55
+            [1,     9,      1,      0],         //56
+            [1,     9,      1,      1],         //57
+            [4,     10,     0,      0],         //58
+            [5,     10,     0,      0],         //59
+            [5,     12,     0,      0]          //60
     ];
 
 
@@ -107,7 +107,6 @@ var PDFFont = (function PFPFontClosure() {
         }
 
         this.fontSize = 1;
-        this.typeName = typeName;
 
         this.faceIdx = 0;
         this.bold = false;
@@ -125,12 +124,12 @@ var PDFFont = (function PFPFontClosure() {
         var fontObj = this.fontObj;
 
         this.bold = fontObj.bold;
+        var typeName = fontObj.name || fontObj.fallbackName;
         if (!this.bold) {
-            this.bold = this.typeName.indexOf("bold") >= 0 || this.typeName.indexOf("black") >= 0;
+            this.bold = typeName.toLowerCase().indexOf("bold") >= 0;
         }
 
-        var typeName = "";
-        var nameArray = this.typeName.split('+');
+        var nameArray = typeName.split('+');
         if (_.isArray(nameArray) && nameArray.length > 1) {
             typeName = nameArray[1].split("-");
             if (_.isArray(typeName) && typeName.length > 1) {
@@ -158,12 +157,7 @@ var PDFFont = (function PFPFontClosure() {
             this.faceIdx = 2;
         }
 
-        if (this.faceIdx == 0) {
-            if (this.typeName.indexOf("narrow") > 0)
-                this.faceIdx = 1;
-        }
-
-//        nodeUtil._logN.call(this, "typeName = " + typeName + " => faceIdx = " + this.faceIdx);
+//        nodeUtil._logN.call(this, "faceIdx = " + this.faceIdx);
     };
 
     var _getFontStyleIndex = function(fontSize) {
@@ -241,6 +235,7 @@ var PDFFont = (function PFPFontClosure() {
     // public (every instance will share the same method, but has no access to private fields defined in constructor)
     cls.prototype.processText = function (p, str, maxWidth, color, fontSize, targetData) {
 //        nodeUtil._logN.call(this, "processText - " + JSON.stringify(p) + ", str = " + str + ", maxWidth = " + maxWidth);
+
         this.fontStyleId = _getFontStyleIndex.call(this, fontSize);
         var text = _processSymbolicFont.call(this, str);
 
@@ -248,14 +243,21 @@ var PDFFont = (function PFPFontClosure() {
             text = " " + text + " ";
         }
 
+        var fontObj = this.fontObj;
+        console.log('------------- fontObj -------------');
+        console.log(fontObj); // Lots of data here!
+        console.log('-----------------------------------');
         var oneText = {x: PDFUnit.toFormX(p.x) - 0.25,
             y: PDFUnit.toFormY(p.y) - 0.75,
             w: PDFUnit.toFormX(maxWidth),
-            clr: PDFUnit.findColorIndex(color),
+            c: color,
+            // clr: PDFUnit.findColorIndex(color),
             A: "left",
             R: [{
                 T: text,
-                S: this.fontStyleId
+                S: fontObj.name || fontObj.fallbackName,
+                B: this.bold?1:0,
+                I: this.italic?1:0
             }]
         };
 
@@ -273,8 +275,6 @@ var PDFFont = (function PFPFontClosure() {
 //
 //        if (oneText != null)
             targetData.Texts.push(oneText);
-
-//        nodeUtil._logN.call(this, text + ":" + this.fontStyleId + ":" + this.typeName);
     };
 
     cls.prototype.clean = function() {

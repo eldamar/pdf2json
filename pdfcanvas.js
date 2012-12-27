@@ -181,6 +181,7 @@ var nodeUtil = require("util"),
             return;
         var p = this.getCoords_(x, y);
 
+        console.log('text fill color? ' + this.fillStyle);
         var a = processStyle(this.fillStyle || this.strokeStyle);
         var color = (!!a) ? a.color : '#000000';
 
